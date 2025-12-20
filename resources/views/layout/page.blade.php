@@ -14,8 +14,22 @@
 	    </div>
 	    
 	    <div class="container base">
-		{{-- assume there's @auth directive here --}}
-		
+
+		@if ($errors->any())
+		    @foreach ($errors->all() as $error)
+			<div class="alert">
+			    <img src="{{ asset('/images/silk/thumb_down.png') }}" class="icon mr-5 silk"> {{ $error }}
+			</div>
+		    @endforeach
+		@endif
+
+		@if (session('success'))
+		    <div class="alert">
+			<img src="{{ asset('/images/silk/thumb_up.png') }}" class="icon mr-5 silk"> {{ session('success') }}
+		    </div>
+		@endif
+
+		@auth
 		<div class="header-buttons">
 		    <a href="#" class="header-button">games</a>
 		    <a href="#" class="header-button">catalog</a>
@@ -24,8 +38,9 @@
 		    
 		    <span class="float-right">you are logged in as <b>ruffy</b></span>
 		</div>
+		@endauth
 
-		<div class="columns below-header">
+		<div class="columns @auth below-header @endauth">
 		    <div class="column no-bg column-1">
 			@yield('content-left')
 		    </div>

@@ -2,7 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+require('roblox.php');
+
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'welcome'])->name("ruffy.welcome");
 
 // imagine there's a middleware here
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name("ruffy.home");
+Route::prefix('/auth')->group(function() {
+    Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name("ruffy.auth.login");
+    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name("ruffy.auth.register");
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name("ruffy.home");
+});
