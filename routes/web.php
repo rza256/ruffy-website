@@ -14,4 +14,8 @@ Route::prefix('/auth')->group(function() {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name("ruffy.home");
+
+    Route::prefix('/games')->group(function() {
+        Route::get('/', [\App\Http\Controllers\Catalog\GamesController::class, 'home'])->name("ruffy.games.home");
+    });
 });

@@ -10,11 +10,6 @@
     <body>
 	<div class="content">
 	    <div class="container header">
-		<img src="{{ asset('/images/header.png') }}">
-	    </div>
-	    
-	    <div class="container base">
-
 		@if ($errors->any())
 		    @foreach ($errors->all() as $error)
 			<div class="alert">
@@ -28,10 +23,14 @@
 			<img src="{{ asset('/images/silk/thumb_up.png') }}" class="icon mr-5 silk"> {{ session('success') }}
 		    </div>
 		@endif
-
+		
+		<img src="{{ asset('/images/header.png') }}">
+	    </div>
+	    
+	    <div class="container base">
 		@auth
 		<div class="header-buttons">
-		    <a href="#" class="header-button">games</a>
+		    <a href="{{ route('ruffy.games.home') }}" class="header-button">games</a>
 		    <a href="#" class="header-button">catalog</a>
 		    <a href="#" class="header-button">avatar</a>
 		    <a href="#" class="header-button">develop</a>

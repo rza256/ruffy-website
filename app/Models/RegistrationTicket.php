@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RegistrationTicket extends Model
 {
+    protected $table = 'registration_ticket';
+    
     protected $fillable = [
         'ticket',
         'user_id',

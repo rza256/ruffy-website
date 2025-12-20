@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('password');
 
             $table->string('blurb')->default("Hello.");
-            $table->string('thumbnail_path');
-            $table->string('3d_path');
+            $table->string('thumbnail_path')->nullable();
+            $table->string('3d_path')->nullable();
             
             $table->rememberToken();
             $table->timestamps();

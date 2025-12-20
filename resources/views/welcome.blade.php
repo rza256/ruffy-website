@@ -24,6 +24,10 @@
 			    <b class="inline-block mt-3">Password</b>
 			    <input class="float-right" type="password" name="password" placeholder="Password">
 			</div>
+			<div class="overflow mt-5">
+			    <b class="inline-block mt-3">Ticket</b>
+			    <input class="float-right" type="password" name="ticket" placeholder="Ticket">
+			</div>
 			
 			<div class="overflow mt-10 pt-0">
 			    <button class="button float-right">register</button>
