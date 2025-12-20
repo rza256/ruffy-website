@@ -35,7 +35,7 @@
 		    <a href="#" class="header-button">avatar</a>
 		    <a href="#" class="header-button">develop</a>
 		    
-		    <span class="float-right">you are logged in as <b>ruffy</b></span>
+		    <span class="float-right">you are logged in as <b>{{ Auth::user()->username }}</b></span>
 		</div>
 		@endauth
 

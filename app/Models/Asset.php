@@ -20,7 +20,7 @@ class Asset extends Model
         'price',
         'gear_attributes',
         'server_size',
-        'chat_style'
+        'chat_style',
     ];
 
     protected $casts = [
