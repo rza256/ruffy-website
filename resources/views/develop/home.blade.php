@@ -1,10 +1,7 @@
 @extends('layout.page')
 @section('title') {{ __('home') }} @endsection
 @section('content-left')
-    @include('components.news')
-    @include('components.friends')
-
-    <div class="section mt-10">
+    <div class="section mb-10">
 	<div class="section-header">
             <b>filters</b>
 	</div>
@@ -14,10 +11,12 @@
 	    </div>
 	</div>
     </div>
+    @include('components.news')
+    @include('components.friends')
 @endsection
 @section('content-center')
     <div class="center-cutout-section mb-10">
-        <h3>games</h3>
+        <h3>develop</h3>
 	<span class="float-right inline-block"><a href="{{ route('ruffy.develop.create', ['type' => 'game']) }}">create</a ></span>
 
 	{{-- "items" class is standin for game/catalog. reuse code --}}

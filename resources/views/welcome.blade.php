@@ -11,21 +11,21 @@
 
 	<div class="columns">
 	    <div class="column-1 pr-5">
-		<h3 class="mt-10 mb-10">Register</h3>
+		<h3 class="mt-10 mb-10">register</h3>
 		
-		<div class="cutout">
+		<div class="cutout half-form">
 		    <form action="{{ route('ruffy.auth.register') }}" method="POST">
 			@csrf
 			<div class="overflow">
-			    <b class="inline-block mt-3">Username</b>
+			    <b class="inline-block mt-3">username</b>
 			    <input class="float-right" type="text" name="username" placeholder="john">
 			</div>
 			<div class="overflow mt-5">
-			    <b class="inline-block mt-3">Password</b>
+			    <b class="inline-block mt-3">password</b>
 			    <input class="float-right" type="password" name="password" placeholder="Password">
 			</div>
 			<div class="overflow mt-5">
-			    <b class="inline-block mt-3">Ticket</b>
+			    <b class="inline-block mt-3">ticket</b>
 			    <input class="float-right" type="password" name="ticket" placeholder="Ticket">
 			</div>
 			
@@ -36,17 +36,17 @@
 		</div>
 	    </div>
 	    <div class="column-1">
-		<h3 class="mt-10 mb-10">Login</h3>
+		<h3 class="mt-10 mb-10">login</h3>
 		
-		<div class="cutout">
+		<div class="cutout half-form">
 		    <form action="{{ route('ruffy.auth.login') }}" method="POST">
 			@csrf
 			<div class="overflow">
-			    <b class="inline-block mt-3">Username</b>
+			    <b class="inline-block mt-3">username</b>
 			    <input class="float-right" type="text" name="username" placeholder="john">
 			</div>
 			<div class="overflow mt-5">
-			    <b class="inline-block mt-3">Password</b>
+			    <b class="inline-block mt-3">password</b>
 			    <input class="float-right" type="password" name="password" placeholder="Password">
 			</div>
 			

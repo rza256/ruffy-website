@@ -94,10 +94,10 @@ enum AssetType : int
             self::Decal => 'decals',
             self::Mesh => 'meshes',
             self::Model => 'models',
-            self::Place => 'places',
+            self::Place => 'game',
             self::Plugin => 'plugins',
             self::Lua => 'scripts',
-            self::Hat => 'accessories',
+            self::Hat => 'hat',
             self::Face => 'faces',
             self::Gear => 'gears',
             self::Head => 'heads',
@@ -105,15 +105,28 @@ enum AssetType : int
         };
     }
 
-    // I know hats are considered clothing but tis in a separate
-    // tab in the develop page so idgaf
-    public static function clothingTypes(): array
+    // kind of sucks but looks nicer on the URL side
+    public static function fromString(string $type)
     {
-        return [
-            self::TShirt,
-            self::Shirt,
-            self::Pants,
-        ];
+        return match ($type) {
+            'animations' => self::Animation,
+            'audio' => self::Audio,
+            't-shirt' => self::TShirt,
+            'shirt' => self::Shirt,
+            'pants' => self::Pants,
+            'decals' => self::Decal,
+            'meshes' => self::Mesh,
+            'models' => self::Model,
+            'game' => self::Place,
+            'plugins' => self::Plugin,
+            'scripts' => self::Lua,
+            'hat' => self::Hat,
+            'faces' => self::Face,
+            'gears' => self::Gear,
+            'heads' => self::Head,
+            'packages' => self::Package,
+            default => null,
+        };
     }
 
     public static function wearableTypes(): array
@@ -126,6 +139,12 @@ enum AssetType : int
             self::Package,
             self::Face,
             self::Pants,
+            self::LeftArm,
+            self::LeftLeg,
+            self::RightArm,
+            self::RightLeg,
+            self::Torso,
+            self::Head,
         ];
     }
 

@@ -33,7 +33,7 @@
 		    <a href="{{ route('ruffy.games.home') }}" class="header-button">games</a>
 		    <a href="#" class="header-button">catalog</a>
 		    <a href="#" class="header-button">avatar</a>
-		    <a href="#" class="header-button">develop</a>
+		    <a href="{{ route('ruffy.develop.home') }}" class="header-button">develop</a>
 		    
 		    <span class="float-right">you are logged in as <b>{{ Auth::user()->username }}</b></span>
 		</div>

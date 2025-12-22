@@ -18,4 +18,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('/games')->group(function() {
         Route::get('/', [\App\Http\Controllers\Catalog\GamesController::class, 'home'])->name("ruffy.games.home");
     });
+
+    Route::prefix('/develop')->group(function() {
+        Route::get('/', [\App\Http\Controllers\Develop::class, 'home'])->name("ruffy.develop.home");
+        Route::get('/create/{type}', [\App\Http\Controllers\Develop::class, 'createView'])->name("ruffy.develop.create");
+        Route::post('/create/{type}', [\App\Http\Controllers\Develop::class, 'create'])->name("ruffy.develop.create");
+    });
 });

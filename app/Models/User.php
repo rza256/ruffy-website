@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\AssetType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,5 +47,25 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function canCreateAssetType(AssetType $type) : bool
+    {
+        // dummy for now,
+        // would preferably have bitwise permissions.
+
+        return match($type) {
+            AssetType::Animation => true,
+            AssetType::Audio => true,
+            AssetType::TShirt => true,
+            AssetType::Shirt => true,
+            AssetType::Pants => true,
+            AssetType::Decal => true,
+            AssetType::Mesh => true,
+            AssetType::Model => true,
+            AssetType::Place => true,
+            AssetType::Plugin => true,
+            default => false,
+        };
     }
 }
