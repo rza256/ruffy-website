@@ -60,6 +60,12 @@ return [
             'report' => false,
         ],
 
+        'places' => [
+            'driver' => 'local',
+            'root' => storage_path('places'),
+            'throw' => false,
+            'report' => false,
+        ],
     ],
 
     /*

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Enums\AssetType;
+use App\Enums\ChatStyle;
+use App\Models\Asset;
+use App\Models\AssetVersion;
 use Illuminate\Validation\Rule;
 
 class Develop extends Controller
@@ -52,7 +55,7 @@ class Develop extends Controller
                 'maxplayers' => ['required', 'integer', 'min:1', 'max:100'],
                 'chatstyle' => [
                     'required',
-                    Rule::enum(AssetType::class),
+                    Rule::enum(ChatStyle::class),
                 ],
             ],
             
@@ -63,9 +66,41 @@ class Develop extends Controller
 
         if ($assetType == AssetType::Place)
         {
+            $file = $request->file('file');
             
-            
-            // handle file, run thumbnail job etc.
+            try {
+                $path = CdnController::saveWithType($user, $file, $assetType);
+            } catch (\Throwable $e) {
+                // report($e);
+
+                /* 
+                return back()->withErrors([
+                    'file' => 'There was an issue uploading your place.',
+                ]);
+                */
+
+                dd($e);
+            }
+
+            $place = Asset::create([
+                'name' => $data['title'],
+                'description' => $data['description'],
+                'type' => AssetType::Place,
+                'creator_id' => $user->id,
+                'is_for_sale' => false,
+                'price' => -1,
+                'chat_style' => ChatStyle::from((int)$data['chatstyle']),
+                'server_size' => $data['maxplayers']
+            ]);
+
+            $version = AssetVersion::create([
+                'asset_id' => $place->id,
+                'cdn_thumbnail' => '', // nothing for now
+                'cdn_file' => $path,
+                'version' => 1,
+            ]);
         }
+
+        return redirect(route('ruffy.develop.home'))->withSuccess('Successfully created your asset');
     }
 }

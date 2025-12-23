@@ -31,7 +31,7 @@
 		@if ($assetType == \App\Enums\AssetType::Place)
 		    <div class="overflow mt-5">
 			<b class="inline-block mt-3">maximum players</b>
-			<input class="float-right" type="number" name="title" placeholder="number" min="0">
+			<input class="float-right" type="number" name="maxplayers" placeholder="number" min="0">
 		    </div>
 
 		    <div class="overflow mt-5">
